@@ -3,6 +3,6 @@ A simple nodejs script that takes a file as input and search a value in a specif
 
 ## Usage
 ```console
-$ csv-searcer.js file_path.csv column_index keyword
+$ node csv-searcer.js file_path.csv column_index keyword
 ```
 Please note that ```column_index``` must be an integer.
