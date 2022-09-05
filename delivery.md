@@ -16,9 +16,11 @@ dove ```./file.csv``` è il percorso di un file csv così formattato:
 3,Verdi,Alberto,03/08/1987;
 ```
 
-Il numero 2 rappresenta l'indice di colonna in cui cercare (nel file precedente il nome)
+Il numero ```2``` rappresenta l'indice di colonna in cui cercare (nel file precedente il nome) e
 ```Alberto``` rappresenta la chiave di ricerca.
 
 L'output del comando deve essere la linea corrispondente, nel nostro caso:
 
-```3,Verdi,Alberto,03/08/1987;```
+```
+3,Verdi,Alberto,03/08/1987;
+```

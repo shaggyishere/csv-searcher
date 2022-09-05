@@ -17,12 +17,12 @@ fs.createReadStream(arguments[0])
 		console.log(err.message)
 	})
 	.pipe(csv({
-		headers: ['0', '1', '2', '3'],
+		headers: true,
 		delimiter: ','
 	}))
 	.on('data', (data) => {
-		if(data[arguments[1]] === arguments[2]) {
+		if(data[`_${arguments[1]}`] === arguments[2]) {
 			const result = Object.keys(data).map((k) => data[k]);
-			console.log(result);
+			console.log(result.toString());
 		}
 	});
