@@ -1,9 +1,9 @@
-const csv = require('csv-parser')
+const { parse } = require('csv-parse')
 const fs = require('fs')
 const arguments = process.argv.slice(2);
 
 if(arguments.length <= 2) {
-    console.log("<Usage>: csv-searcer.js file_path.csv column_index keyword ")
+    console.log("<usage>: csv-searcer.js file_path.csv column_index keyword ")
     process.exit(1);
 }
 
@@ -16,12 +16,16 @@ fs.createReadStream(arguments[0])
 	.on('error', (err) => {
 		console.log(err.message)
 	})
-	.pipe(csv({
-		headers: true,
+	.pipe(parse({
+		relax_column_count: true,
+		record_delimiter: [';\r\n', ';'],
 		delimiter: ','
 	}))
+	.on('error', (err) => {
+		console.log(err.message)
+	})
 	.on('data', (data) => {
-		if(data[`_${arguments[1]}`] === arguments[2]) {
+		if(data[arguments[1]] === arguments[2]) {
 			const result = Object.keys(data).map((k) => data[k]);
 			console.log(result.toString());
 		}
